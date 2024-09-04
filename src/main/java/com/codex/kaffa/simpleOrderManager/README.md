@@ -13,6 +13,7 @@ This document outlines the database model for a Simple Order Manager System. The
 
 
 ---
+![Captura de tela 2024-09-04 205054](https://github.com/user-attachments/assets/e3fd3949-738d-4080-9e61-c2fd1594555f)
 
 ## SQL: List Orders with Number of Items
 
@@ -24,6 +25,7 @@ GROUP BY o.id;
 
 
 ---
+
 ## Indexes:
 
 On the Orders table:
