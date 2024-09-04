@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.codex.kaffa.todoList.controller.dto.TaskCreateDto;
 import com.codex.kaffa.todoList.controller.dto.TaskResposnseDto;
 import com.codex.kaffa.todoList.controller.dto.mapper.TaskMapper;
+import com.codex.kaffa.todoList.controller.exception.EntityNotFoundExcepation;
 import com.codex.kaffa.todoList.model.Task;
 import com.codex.kaffa.todoList.repository.TaskRepository;
 
@@ -18,10 +19,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
+    
 
     private Task getTask(Long id) {
         Task task = taskRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Task not found"));
+                () -> new EntityNotFoundExcepation(String.format("User id=%s not found", id)));
         return task;
     }
 
@@ -56,6 +58,7 @@ public class TaskService {
         return TaskMapper.converToDto(task);
     }
 
+    @Transactional(readOnly = true)
     public List<TaskResposnseDto> getAllTasks() {
         List<Task> tasks = taskRepository.findAll();
 
