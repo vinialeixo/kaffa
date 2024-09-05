@@ -65,4 +65,9 @@ public class TaskService {
         return TaskMapper.converToDtoList(tasks);
     }
 
+    public void deleteTask(Long id) {
+        Task task = getTask(id);
+        taskRepository.delete(task);
+    }
+
 }
