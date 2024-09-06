@@ -48,7 +48,3 @@ After cloning the repository, you can run the application with the following com
 ```
 
 This will start the Spring Boot application, and both Swagger and the H2 database will be automatically available.
-
-## Contribution
-
-Contributions are welcome! Feel free to open issues or pull requests.
