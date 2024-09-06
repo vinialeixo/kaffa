@@ -18,7 +18,12 @@ public class WorldClockController {
     @GetMapping
     public ResponseEntity<String> getMyTime() {
 
-        return ResponseEntity.status(HttpStatus.OK).body(worldClockService.getCurrentDateTime());
+        try {
+            return worldClockService.getCurrentDateTime();
+            
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        }
 
     }
 
@@ -26,5 +31,4 @@ public class WorldClockController {
     public ResponseEntity<TimeResponse> getCurrentTime() {
         return ResponseEntity.status(HttpStatus.OK).body(worldClockService.getCurrenTime());
     }
-
 }

@@ -1,4 +1,4 @@
-package com.codex.kaffa.todoList.model;
+package com.codex.kaffa.todoList.domain.model;
 
 import java.time.LocalDateTime;
 

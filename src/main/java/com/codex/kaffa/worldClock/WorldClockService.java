@@ -5,6 +5,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class WorldClockService {
+    String url = "http://worldclockapi.com/api/json/utc/now";
+
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -27,9 +31,7 @@ public class WorldClockService {
         }
     }
 
-    public String getCurrentDateTime() {
-        String url = "http://worldclockapi.com/api/json/utc/now";
-
+    public ResponseEntity<String> getCurrentDateTime() {
         String response = getResponse(url);
 
         try {
@@ -45,16 +47,14 @@ public class WorldClockService {
             String localTimeStr = localTime.format(formatter);
             String utcTimeStr = utcTime.format(formatter);
 
-            return "Local Time: " + localTimeStr + ", UTC Time: " + utcTimeStr;
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Local Time: " + localTimeStr + ", UTC Time: " + utcTimeStr);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to parse JSON response", e);
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }
     }
 
     public TimeResponse getCurrenTime() {
-        // URL da API
-        String url = "http://worldclockapi.com/api/json/utc/now";
-
         String response = getResponse(url);
         try {
             JsonNode jsonNode = objectMapper.readTree(response);

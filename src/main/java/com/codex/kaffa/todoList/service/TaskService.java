@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service;
 import com.codex.kaffa.todoList.controller.dto.TaskCreateDto;
 import com.codex.kaffa.todoList.controller.dto.TaskResposnseDto;
 import com.codex.kaffa.todoList.controller.dto.mapper.TaskMapper;
-import com.codex.kaffa.todoList.controller.exception.EntityNotFoundExcepation;
-import com.codex.kaffa.todoList.model.Task;
-import com.codex.kaffa.todoList.repository.TaskRepository;
+import com.codex.kaffa.todoList.domain.model.Task;
+import com.codex.kaffa.todoList.domain.repository.TaskRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +18,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
-    
 
     private Task getTask(Long id) {
         Task task = taskRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundExcepation(String.format("User id=%s not found", id)));
+                () -> new RuntimeException(String.format("User id=%s not found", id)));
         return task;
     }
 
@@ -46,16 +44,15 @@ public class TaskService {
     @Transactional
     public TaskResposnseDto updateTask(TaskCreateDto body, Long id) {
         Task task = getTask(id);
-        if (body.getTaskName() != null) {
-            task.setTaskName(body.getTaskName());
-        }
-        if (body.getObservation() != null) {
-            task.setObservation(body.getObservation());
-        }
+
+        task.setTaskName(body.getTaskName());
+
+        task.setObservation(body.getObservation());
         task.setUpdateOn(LocalDateTime.now());
 
         taskRepository.save(task);
         return TaskMapper.converToDto(task);
+
     }
 
     @Transactional(readOnly = true)

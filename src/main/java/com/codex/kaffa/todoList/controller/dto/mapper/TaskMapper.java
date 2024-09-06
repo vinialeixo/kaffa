@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 
 import com.codex.kaffa.todoList.controller.dto.TaskCreateDto;
 import com.codex.kaffa.todoList.controller.dto.TaskResposnseDto;
-import com.codex.kaffa.todoList.model.Task;
+import com.codex.kaffa.todoList.domain.model.Task;
 
 public class TaskMapper {
 

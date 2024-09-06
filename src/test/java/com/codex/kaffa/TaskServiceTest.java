@@ -17,8 +17,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.codex.kaffa.todoList.controller.dto.TaskCreateDto;
 import com.codex.kaffa.todoList.controller.dto.TaskResposnseDto;
 import com.codex.kaffa.todoList.controller.dto.mapper.TaskMapper;
-import com.codex.kaffa.todoList.model.Task;
-import com.codex.kaffa.todoList.repository.TaskRepository;
+import com.codex.kaffa.todoList.domain.model.Task;
+import com.codex.kaffa.todoList.domain.repository.TaskRepository;
 import com.codex.kaffa.todoList.service.TaskService;
 
 import jakarta.transaction.Transactional;
