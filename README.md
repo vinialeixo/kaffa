@@ -11,7 +11,6 @@ To clone the project to your local machine, run the following command in the ter
 git clone https://github.com/vinialeixo/kaffa
 ```
 
-Replace `your-username` and `your-repository` with the correct path to your GitHub repository.
 
 ## Technologies Used
 
