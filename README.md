@@ -32,7 +32,10 @@ After starting the application, access Swagger at the following link:
 
 ```
 http://localhost:8080/swagger-ui.html
+
+
 ```
+![Captura de tela 2024-09-05 222811](https://github.com/user-attachments/assets/3d6c91ce-1909-406a-ae0d-ffbd10cdf94d)
 
 Here, you can view and interactively test all API routes.
 
