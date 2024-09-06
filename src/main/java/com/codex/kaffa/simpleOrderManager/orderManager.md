@@ -13,9 +13,11 @@ This document outlines the database model for a Simple Order Manager System. The
 
 
 ---
-![Captura de tela 2024-09-04 205054](https://github.com/user-attachments/assets/e3fd3949-738d-4080-9e61-c2fd1594555f)
+![Captura de tela 2024-09-05 211423](https://github.com/user-attachments/assets/455e1c80-1ee8-45a1-9346-aad1f3e7e755)
+
 
 ## SQL: List Orders with Number of Items
+
 
 ```sql
 SELECT o.id AS order_id, COUNT(oi.id) AS total_items
