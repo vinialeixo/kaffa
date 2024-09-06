@@ -8,39 +8,34 @@ import org.junit.jupiter.api.Test;
 import com.codex.kaffa.cnpj.utils.CnpjUtil;
 
 public class CnpjUtilTest {
-@Test
+
+    @Test
     public void testValidFormattedCNPJ() {
         String validCnpjFormatted = "12.345.678/0001-95";
-        assertTrue(CnpjUtil.isValidCNPJ(validCnpjFormatted), "CNPJ formatado válido deve retornar true");
+        assertTrue(CnpjUtil.isValidCNPJ(validCnpjFormatted), "Valid formatted CNPJ should return true");
     }
 
     @Test
     public void testValidUnformattedCNPJ() {
         String validCnpjUnformatted = "12345678000195";
-        assertTrue(CnpjUtil.isValidCNPJ(validCnpjUnformatted), "CNPJ não formatado válido deve retornar true");
+        assertTrue(CnpjUtil.isValidCNPJ(validCnpjUnformatted), "Valid unformatted CNPJ should return true");
     }
-
-    // @Test
-    // public void testInvalidCNPJ() {
-    //     String invalidCnpj = "12.345.678/0001-00"; 
-    //     assertFalse(CnpjUtil.isValidCNPJ(invalidCnpj), "CNPJ inválido deve retornar false");
-    // }
 
     @Test
     public void testShortCNPJ() {
-        String shortCnpj = "12.345.678/0001-9"; // CNPJ curto
-        assertFalse(CnpjUtil.isValidCNPJ(shortCnpj), "CNPJ curto deve retornar false");
+        String shortCnpj = "12.345.678/0001-9"; // Short CNPJ
+        assertFalse(CnpjUtil.isValidCNPJ(shortCnpj), "Short CNPJ should return false");
     }
 
     @Test
     public void testLongCNPJ() {
-        String longCnpj = "12.345.678/0001-955"; // CNPJ longo
-        assertFalse(CnpjUtil.isValidCNPJ(longCnpj), "CNPJ longo deve retornar false");
+        String longCnpj = "12.345.678/0001-955"; // Long CNPJ
+        assertFalse(CnpjUtil.isValidCNPJ(longCnpj), "Long CNPJ should return false");
     }
 
     @Test
     public void testCNPJWithLetters() {
-        String cnpjWithLetters = "12.345.678/000A-95"; // CNPJ com letras
-        assertFalse(CnpjUtil.isValidCNPJ(cnpjWithLetters), "CNPJ com letras deve retornar false");
+        String cnpjWithLetters = "12.345.678/000A-95"; // CNPJ with letters
+        assertFalse(CnpjUtil.isValidCNPJ(cnpjWithLetters), "CNPJ with letters should return false");
     }
 }
