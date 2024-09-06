@@ -5,14 +5,12 @@ public class CnpjUtil {
 
     public static boolean isValidCNPJ(String cnpj) {
         String cleanedString = cnpj.replaceAll("[./-]", "");
-
-        if (cleanedString.length() != CnpjMinimumLenght) {
-            return false;
-        }
+        
         if (containsLetters(cleanedString)) {
             return false;
         }
-        return true;
+
+        return cleanedString.length() == CnpjMinimumLenght;
     }
 
     private static boolean containsLetters(String input) {

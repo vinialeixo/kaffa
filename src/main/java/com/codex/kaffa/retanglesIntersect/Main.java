@@ -2,8 +2,8 @@ package com.codex.kaffa.retanglesIntersect;
 
 
 class Rectangle {
-    int x1, y1; // canto inferior esquerdo
-    int x2, y2; // canto superior direito
+    int x1, y1; 
+    int x2, y2; 
 
     public Rectangle(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
