@@ -23,13 +23,6 @@ Replace `your-username` and `your-repository` with the correct path to your GitH
 
 The project uses the H2 database, which is automatically created in memory when running the application. No manual database configuration is required.
 
-To access the H2 console and inspect the database, use the following link in your browser:
-
-```
-http://localhost:8080/h2-console
-```
-
-The database connection URL is: `jdbc:h2:mem:testdb`
 
 ## Testing the API with Swagger
 
